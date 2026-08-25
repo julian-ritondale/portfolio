@@ -22,6 +22,7 @@ i18n
             contact: "CONTACT"
           },
           sections: {
+            resume: "Resume",
             quote: "\"Any sufficiently advanced technology is indistinguishable from magic.\"",
             quote_author: "Arthur C. Clarke",
 
@@ -157,6 +158,7 @@ i18n
             contact: "CONTACTO"
           },
           sections: {
+            resume: "CV",
             quote: "\"Cualquier tecnología lo suficientemente avanzada es indistinguible de la magia.\"",
             quote_author: "Arthur C. Clarke",
 

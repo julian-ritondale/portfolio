@@ -75,11 +75,11 @@ function App() {
             GITHUB
           </a>
           <a
-            href={isSpanish ? '/cv-es.pdf' : '/cv-en.pdf'}
+            href={isSpanish ? '/Julian_Ritondale_CV.pdf' : '/Julian_Ritondale_Resume.pdf'}
             target="_blank"
             rel="noopener noreferrer"
           >
-            CV
+            {t('sections.resume')}
           </a>
         </div>
       </nav>
