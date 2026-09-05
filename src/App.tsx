@@ -25,7 +25,7 @@ function getAge(): number {
 function App() {
   const { t, i18n } = useTranslation();
   const [openProjects, setOpenProjects] = useState<Record<number, boolean>>({});
-  const [openActivity, setOpenActivity] = useState(false);
+  const [openAchievement, setOpenAchievement] = useState(false);
 
   const toggleLanguage = () => {
     const newLang = i18n.language.startsWith('es') ? 'en' : 'es';
@@ -54,7 +54,7 @@ function App() {
     videos: projectVideos[i],
   }));
 
-  const activityBullets = t('sections.activity_1_bullets', { returnObjects: true }) as string[];
+  const achievementBullets = t('sections.achievement_1_bullets', { returnObjects: true }) as string[];
 
   return (
     <div className="app-container">
@@ -64,7 +64,7 @@ function App() {
           <a href="#about">{t('nav.about')}</a>
           <a href="#education">{t('nav.education')}</a>
           <a href="#projects">{t('nav.projects')}</a>
-          <a href="#activities">{t('nav.activities')}</a>
+          <a href="#achievements">{t('nav.achievements')}</a>
           <a href="#skills">{t('nav.skills')}</a>
           <a href="#contact">{t('nav.contact')}</a>
           <a
@@ -99,7 +99,9 @@ function App() {
         <section className="portfolio-section" id="about">
           <h2>{t('sections.about_title')}</h2>
           <div className="reflections">
+            <p className="section-desc">{t('sections.about_desc_1')}</p>
             <p className="section-desc">{t('sections.about_desc_2')}</p>
+            <p className="section-desc">{t('sections.about_desc_3')}</p>
           </div>
           <div className="about-info">
             <span className="about-name">{t('sections.name')}</span>
@@ -172,32 +174,32 @@ function App() {
           </div>
         </section>
 
-        <section className="portfolio-section" id="activities">
-          <h2>{t('sections.activities_title')}</h2>
+        <section className="portfolio-section" id="achievements">
+          <h2>{t('sections.achievements_title')}</h2>
           <div className="reflections">
-            <p className="section-desc">{t('sections.activities_desc')}</p>
+            <p className="section-desc">{t('sections.achievements_desc')}</p>
           </div>
-          <div className="activity-entry">
+          <div className="achievement-entry">
             <div
-              className="activity-summary-wrapper"
-              onClick={() => setOpenActivity(!openActivity)}
+              className="achievement-summary-wrapper"
+              onClick={() => setOpenAchievement(!openAchievement)}
               role="button"
               tabIndex={0}
-              onKeyDown={e => e.key === 'Enter' && setOpenActivity(!openActivity)}
+              onKeyDown={e => e.key === 'Enter' && setOpenAchievement(!openAchievement)}
             >
-              <div className="activity-header">
-                <span className="activity-name">
-                  <span className="activity-title">{t('sections.activity_1_name')}</span>
-                  <span className="activity-label">{t('sections.activity_1_label')}</span>
+              <div className="achievement-header">
+                <span className="achievement-name">
+                  <span className="achievement-title">{t('sections.achievement_1_name')}</span>
+                  <span className="achievement-label">{t('sections.achievement_1_label')}</span>
                 </span>
-                <span className="activity-meta">
-                  <span className="activity-place">{t('sections.activity_1_place')}</span>
-                  <span className="activity-date">{t('sections.activity_1_date')}</span>
+                <span className="achievement-meta">
+                  <span className="achievement-place">{t('sections.achievement_1_place')}</span>
+                  <span className="achievement-date">{t('sections.achievement_1_date')}</span>
                 </span>
               </div>
-              <div className="activity-note">{t('sections.activity_1_note')}</div>
+              <div className="achievement-note">{t('sections.achievement_1_note')}</div>
             </div>
-            {openActivity && (
+            {openAchievement && (
               <div className="project-body">
                 <Video
                   src="/videos/scout-demo.mp4"
@@ -207,7 +209,7 @@ function App() {
                   playsInline
                 />
                 <ul className="bullet-list">
-                  {activityBullets.map((b, i) => (
+                  {achievementBullets.map((b, i) => (
                     <li key={i}>{b}</li>
                   ))}
                 </ul>
@@ -224,8 +226,16 @@ function App() {
               <span className="skill-value">{t('sections.skills_languages')}</span>
             </div>
             <div className="skill-row">
+              <span className="skill-label">{t('sections.skills_ai_label')}:</span>
+              <span className="skill-value">{t('sections.skills_ai')}</span>
+            </div>
+            <div className="skill-row">
               <span className="skill-label">{t('sections.skills_frameworks_label')}:</span>
               <span className="skill-value">{t('sections.skills_frameworks')}</span>
+            </div>
+            <div className="skill-row">
+              <span className="skill-label">{t('sections.skills_cloud_label')}:</span>
+              <span className="skill-value">{t('sections.skills_cloud')}</span>
             </div>
             <div className="skill-row">
               <span className="skill-label">{t('sections.skills_databases_label')}:</span>
