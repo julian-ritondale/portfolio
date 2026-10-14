@@ -13,13 +13,35 @@ i18n
     resources: {
       en: {
         translation: {
-          nav: {
-            about: "ABOUT",
-            education: "EDUCATION",
-            projects: "PROJECTS",
-            achievements: "ACHIEVEMENTS",
-            skills: "SKILLS",
-            contact: "CONTACT"
+          ui: {
+            nav: {
+              about: 'About',
+              education: 'Education',
+              experience: 'Experience',
+              projects: 'Projects',
+              github: 'GitHub',
+              socials: 'Socials',
+              resume: 'Resume',
+              contact: 'Contact',
+            },
+            now: 'NOW',
+            current: 'Current',
+            notice: "Hi! I'm open to opportunities in\nProduct or Engineering :)",
+            intern: 'Internship',
+            parttime: 'Part-time',
+            baModes: 'On-site / Hybrid / Remote',
+            us: 'US',
+            usModes: 'Remote',
+            letsTalk: "Let's talk",
+            prompts: ['What are you working on?', 'Best project?', 'Tech stack', 'Where do you study?', 'How can I reach you?'],
+            heroTitle: "Hi, I'm Julian. Ask about me.",
+            placeholder: "Ask about his experience, projects, skills…",
+            ask: 'Ask',
+            clear: 'Clear',
+            thinking: 'THINKING…',
+            send: 'Send',
+            top: 'BACK TO TOP ↑',
+            error: "Something went wrong reaching the assistant. Please try again in a moment, or email julianritondale@gmail.com.",
           },
           sections: {
             resume: "Resume",
@@ -32,6 +54,7 @@ i18n
             about_desc_1: "I'm a 4th-year Software Engineering student at Universidad Austral.",
             about_desc_2: "I'm passionate about building creative products with new technologies and talented people.",
             about_desc_3: "I value collaborative environments where people feel supported and motivated to do their best.",
+            about_skills: ['Kotlin', 'Java', 'TypeScript', 'Python', 'SQL', 'HTML/CSS', 'Claude API', 'OpenAI API', 'ElevenLabs', 'Langfuse', 'Braintrust', 'Spring Boot', 'Nest JS', 'Express', 'Prisma', 'React', 'Next.js', 'Tailwind CSS', 'Azure', 'Vercel', 'Railway', 'Docker', 'GitHub Actions', 'PostgreSQL', 'Supabase', 'Redis', 'Git/GitHub', 'Claude Code', 'Codex', 'Spanish / English'],
 
             education_title: "EDUCATION",
             education_desc_1: "The world is full of incredible people nobody really knows about.",
@@ -41,6 +64,18 @@ i18n
             education_degree: "BS in Software Engineering",
             education_minor: "Minor in Artificial Intelligence",
             education_location: "Buenos Aires, Argentina",
+            education_coursework: ['Artificial Intelligence', 'Algorithms & Data Structures', 'Software Design', 'Concurrent Programming', 'Databases', 'Operating Systems'],
+
+            experience_title: "EXPERIENCE",
+            experience_1_role: "Product Engineer",
+            experience_1_company: "IntegridAI",
+            experience_1_date: "Feb. 2026 — Now",
+            experience_1_bullets: [
+              "Compliance management platform helping SMEs meet the requirements of Argentina's anti-corruption law. Own product for a 5-person team.",
+              "Ran 8 validation sessions with 5 stakeholders, confirming 20+ features that shaped the backlog and roadmap.",
+              "Shipped real-time voice simulations for compliance training end to end, integrating ElevenLabs Agents for live voice conversations and the Claude API as an LLM-as-evaluator.",
+              "Benchmarked 6 LLMs in Braintrust, cutting token usage by 8.1% and cost by 14.6% on production models while maintaining evaluation quality.",
+            ],
 
             projects_title: "PROJECTS",
             projects_desc_1: "There's nothing more rewarding than working with talented people on fun projects.",
@@ -56,15 +91,13 @@ i18n
             ],
 
             project_2_name: "Snippet Searcher",
-            project_2_stack: "Kotlin, TypeScript, Spring Boot, React, PostgreSQL, Docker, Azure",
-            project_2_date: "Oct. 2025 - Dec. 2025",
+            project_2_stack: "Kotlin, TypeScript, Spring Boot, React, PostgreSQL, Redis, Docker, Azure",
+            project_2_date: "Aug. 2025 - Dec. 2025",
             project_2_bullets: [
-              "Built a microservices web application for managing and sharing code snippets.",
-              "Secured the platform by implementing authentication with Auth0 and request authorization through Spring Gateway.",
-              "Improved responsiveness by offloading time-intensive tasks to asynchronous inter-service communication using Redis.",
-              "Monitored system health by setting up observability in New Relic with custom attributes, dashboards, and alerts.",
-              "Automated deployments and integration checks by establishing GitHub Actions CI/CD pipelines targeting Azure VMs.",
-              "Validated critical user flows by implementing E2E tests using Cypress."
+              "Led development of a code snippet management and sharing platform on a 4-microservice architecture, powered by a custom language toolchain for a TypeScript subset.",
+              "Implemented the core language pipeline by building the lexer, parser, interpreter, and formatter from scratch.",
+              "Validated the language toolchain against an external TCK, passing all 49 scenarios under a 7MB heap limit.",
+              "Improved responsiveness by offloading time-intensive tasks to asynchronous inter-service communication using Redis."
             ],
 
             project_3_name: "PrintScript",
@@ -99,19 +132,18 @@ i18n
 
             project_6_name: "Agent Orchestra",
             project_6_stack: "Python, OpenAI API, ChromaDB, Langfuse",
-            project_6_date: "Jul. 2026",
+            project_6_date: "Apr. 2026 - Jul. 2026",
             project_6_bullets: [
-              "Collaborated building a multi-agent coding assistant orchestrating five specialized sub-agents with file, command, and search tools",
-              "Designed a three-tier memory system to persist findings and resume interrupted tasks across sessions",
-              "Implemented a RAG pipeline with ChromaDB and OpenAI embeddings to ground agent responses in official documentation",
-              "Designed a permissions layer enforcing per-agent tool access, path restrictions, and command allow/deny lists",
-              "Integrated Langfuse for observability, tracing per-agent spans, token usage/cost, and RAG retrieval quality"
+              "Co-built a multi-agent coding assistant with an orchestrator, 5 specialized sub-agents, and 9 tools",
+              "Enforced safe, resumable execution by designing a permissioned tool dispatcher and a 3-tier memory system",
+              "Grounded responses in official documentation by building a RAG pipeline over 28 documents in ChromaDB",
+              "Achieved 99.3% error-free execution across 280 instrumented spans by tracking cost, token usage, and retrieval quality in Langfuse"
             ],
 
             achievements_title: "ACHIEVEMENTS",
             achievements_desc: "Try everything. If the goal is to experience, you always win.",
             achievement_details_label: "Details",
-            achievement_1_name: "Your Time, Your World Cup",
+            achievement_1_name: "Scout",
             achievement_1_label: "AI Competition",
             achievement_1_date: "Jun. 2026",
             achievement_1_place: "1st Place",
@@ -126,22 +158,32 @@ i18n
 
             skills_title: "TECHNICAL SKILLS",
             skills_languages_label: "Programming Languages",
-            skills_languages: "Kotlin, Java, TypeScript, JavaScript, HTML/CSS, Python, SQL",
+            skills_languages: "Kotlin, Java, TypeScript, Python, SQL, HTML/CSS",
             skills_ai_label: "AI/ML",
-            skills_ai: "OpenAI API, Langfuse, RAG",
+            skills_ai: "Claude API, OpenAI API, ElevenLabs, Langfuse, Braintrust",
             skills_frameworks_label: "Frameworks & Libraries",
-            skills_frameworks: "Spring Boot, Nest JS, React, Next.js, Tailwind CSS",
+            skills_frameworks: "Spring Boot, Nest JS, Express, Prisma, React, Next.js, Tailwind CSS",
             skills_cloud_label: "Cloud & DevOps",
-            skills_cloud: "Azure, Docker, GitHub Actions, Redis, New Relic, Auth0",
+            skills_cloud: "Azure, Vercel, Railway, Docker, GitHub Actions",
             skills_databases_label: "Databases",
-            skills_databases: "PostgreSQL, MySQL",
+            skills_databases: "PostgreSQL, Supabase, Redis",
             skills_tools_label: "Developer Tools",
-            skills_tools: "Git/GitHub, Gradle, Cypress, Swagger/OpenAPI, Codex, Claude Code",
+            skills_tools: "Git/GitHub, Claude Code, Codex",
             skills_spoken_languages_label: "Languages",
             skills_spoken_languages: "Spanish (Native), English (Fluent/Professional)",
 
+            github_contrib: "CONTRIBUTIONS IN THE LAST YEAR",
+            github_view: "View profile",
+
+            socials_title: "SOCIALS",
+
+            download: "Download",
+
             contact_title: "CONTACT",
             contact_desc: "One of the most important things I've learned in recent years: the people you can reach just by sending an email would genuinely surprise you.",
+            contact_your_email: "Your email",
+            contact_say_hi: "Say hi…",
+            contact_send: "Send",
             name: "Julian Ritondale",
             phone: "+54 11-2160-4006",
             email: "julianritondale@gmail.com",
@@ -152,13 +194,35 @@ i18n
       },
       es: {
         translation: {
-          nav: {
-            about: "SOBRE MÍ",
-            education: "EDUCACIÓN",
-            projects: "PROYECTOS",
-            achievements: "LOGROS",
-            skills: "HABILIDADES",
-            contact: "CONTACTO"
+          ui: {
+            nav: {
+              about: 'Sobre mí',
+              education: 'Educación',
+              experience: 'Experiencia',
+              projects: 'Proyectos',
+              github: 'GitHub',
+              socials: 'Redes',
+              resume: 'CV',
+              contact: 'Contacto',
+            },
+            now: 'AHORA',
+            current: 'Actual',
+            notice: '¡Hola! Estoy abierto a oportunidades\nen Producto o Ingeniería :)',
+            intern: 'Pasantía',
+            parttime: 'Part-time',
+            baModes: 'Presencial / Híbrido / Remoto',
+            us: 'EE. UU.',
+            usModes: 'Remoto',
+            letsTalk: 'Hablemos',
+            prompts: ['¿En qué estás trabajando?', '¿Tu mejor proyecto?', 'Stack técnico', '¿Dónde estudiás?', '¿Cómo te contacto?'],
+            heroTitle: 'Hola, soy Julián. Preguntá sobre mí.',
+            placeholder: 'Preguntá sobre su experiencia, proyectos, skills…',
+            ask: 'Preguntar',
+            clear: 'Borrar',
+            thinking: 'PENSANDO…',
+            send: 'Enviar',
+            top: 'VOLVER ARRIBA ↑',
+            error: 'Hubo un problema al conectar con el asistente. Probá de nuevo en un momento, o escribile a julianritondale@gmail.com.',
           },
           sections: {
             resume: "CV",
@@ -171,6 +235,7 @@ i18n
             about_desc_1: "Soy estudiante de 4to año de Ingeniería Informática en la Universidad Austral.",
             about_desc_2: "Me apasiona crear productos y proyectos con nuevas tecnologías junto a personas talentosas.",
             about_desc_3: "Valoro entornos donde las personas se sientan acompañadas y motivadas a dar lo mejor de sí.",
+            about_skills: ['Kotlin', 'Java', 'TypeScript', 'Python', 'SQL', 'HTML/CSS', 'Claude API', 'OpenAI API', 'ElevenLabs', 'Langfuse', 'Braintrust', 'Spring Boot', 'Nest JS', 'Express', 'Prisma', 'React', 'Next.js', 'Tailwind CSS', 'Azure', 'Vercel', 'Railway', 'Docker', 'GitHub Actions', 'PostgreSQL', 'Supabase', 'Redis', 'Git/GitHub', 'Claude Code', 'Codex', 'Español / Inglés'],
 
             education_title: "EDUCACIÓN",
             education_desc_1: "El mundo está lleno de personas increíbles que nadie conoce realmente.",
@@ -180,6 +245,18 @@ i18n
             education_degree: "Grado en Ingeniería Informática",
             education_minor: "Orientación en Inteligencia Artificial",
             education_location: "Buenos Aires, Argentina",
+            education_coursework: ['Inteligencia Artificial', 'Algoritmos y Estructuras de Datos', 'Diseño de Software', 'Programación Concurrente', 'Bases de Datos', 'Sistemas Operativos'],
+
+            experience_title: "EXPERIENCIA",
+            experience_1_role: "Product Engineer",
+            experience_1_company: "IntegridAI",
+            experience_1_date: "Feb. 2026 — Ahora",
+            experience_1_bullets: [
+              "Plataforma de compliance que ayuda a PyMEs a cumplir con la ley anticorrupción de Argentina. Soy dueño de producto para un equipo de 5 personas.",
+              "Lideré 8 sesiones de validación con 5 stakeholders, confirmando más de 20 funcionalidades que definieron el backlog y el roadmap.",
+              "Lancé simulaciones de voz en tiempo real para entrenamiento de compliance de punta a punta, integrando ElevenLabs Agents para conversaciones de voz en vivo y la API de Claude como evaluador LLM.",
+              "Comparé 6 LLMs en Braintrust, reduciendo el uso de tokens en 8.1% y el costo en 14.6% en producción manteniendo la calidad de evaluación.",
+            ],
 
             projects_title: "PROYECTOS",
             projects_desc_1: "No hay nada más gratificante que trabajar con personas talentosas en proyectos divertidos.",
@@ -195,15 +272,13 @@ i18n
             ],
 
             project_2_name: "Snippet Searcher",
-            project_2_stack: "Kotlin, TypeScript, Spring Boot, React, PostgreSQL, Docker, Azure",
-            project_2_date: "Oct. 2025 - Dic. 2025",
+            project_2_stack: "Kotlin, TypeScript, Spring Boot, React, PostgreSQL, Redis, Docker, Azure",
+            project_2_date: "Ago. 2025 - Dic. 2025",
             project_2_bullets: [
-              "Construí una aplicación web de microservicios para gestionar y compartir fragmentos de código.",
-              "Aseguré la plataforma implementando autenticación con Auth0 y autorización de solicitudes mediante Spring Gateway.",
-              "Mejoré la capacidad de respuesta delegando tareas intensivas a comunicación asincrónica entre servicios usando Redis.",
-              "Monitoreé la salud del sistema configurando observabilidad en New Relic con atributos personalizados, dashboards y alertas.",
-              "Automaticé despliegues y verificaciones de integración estableciendo pipelines de CI/CD en GitHub Actions hacia VMs de Azure.",
-              "Validé flujos críticos de usuario implementando pruebas E2E con Cypress."
+              "Lideré el desarrollo de una plataforma de gestión y distribución de snippets de código sobre una arquitectura de 4 microservicios, impulsada por una toolchain de lenguaje propia para un subconjunto de TypeScript.",
+              "Implementé el pipeline central del lenguaje construyendo desde cero el lexer, el parser, el intérprete y el formateador.",
+              "Validé la toolchain del lenguaje contra un TCK externo, aprobando los 49 escenarios con un límite de heap de 7MB.",
+              "Mejoré la capacidad de respuesta delegando tareas de larga duración a comunicación asincrónica entre servicios mediante Redis."
             ],
 
             project_3_name: "PrintScript",
@@ -238,19 +313,18 @@ i18n
 
             project_6_name: "Agent Orchestra",
             project_6_stack: "Python, OpenAI API, ChromaDB, Langfuse",
-            project_6_date: "Jul. 2026",
+            project_6_date: "Abr. 2026 - Jul. 2026",
             project_6_bullets: [
-              "Colaboré construyendo un asistente de código multiagente que orquesta cinco sub-agentes especializados con herramientas de archivos, comandos y búsqueda",
-              "Diseñé un sistema de memoria de tres niveles para persistir hallazgos y reanudar tareas interrumpidas entre sesiones",
-              "Implementé un pipeline de RAG con ChromaDB y embeddings de OpenAI para fundamentar las respuestas de los agentes en documentación oficial",
-              "Diseñé una capa de permisos que restringe el acceso a herramientas por agente, rutas de archivo y comandos permitidos/denegados",
-              "Integré Langfuse para observabilidad, registrando spans por agente, uso de tokens/costo, y calidad de recuperación del RAG"
+              "Co-construí un asistente de código multi-agente con un orquestador, 5 sub-agentes especializados y 9 tools",
+              "Garanticé una ejecución segura y reanudable diseñando un dispatcher de tools con permisos y un sistema de memoria de 3 niveles",
+              "Fundamenté las respuestas en documentación oficial construyendo un pipeline RAG sobre 28 documentos en ChromaDB",
+              "Logré un 99.3% de ejecución sin errores en 280 spans instrumentados, monitoreando costo, uso de tokens y calidad de recuperación en Langfuse"
             ],
 
             achievements_title: "LOGROS",
             achievements_desc: "Intentalo todo. Si el objetivo es vivir la experiencia, siempre vas a ganar.",
             achievement_details_label: "Detalles",
-            achievement_1_name: "Tu Tiempo, Tu Mundial",
+            achievement_1_name: "Scout",
             achievement_1_label: "Competencia de IA",
             achievement_1_date: "Jun. 2026",
             achievement_1_place: "1er Puesto",
@@ -265,22 +339,32 @@ i18n
 
             skills_title: "HABILIDADES TÉCNICAS",
             skills_languages_label: "Lenguajes de Programación",
-            skills_languages: "Kotlin, Java, TypeScript, JavaScript, HTML/CSS, Python, SQL",
+            skills_languages: "Kotlin, Java, TypeScript, Python, SQL, HTML/CSS",
             skills_ai_label: "IA/ML",
-            skills_ai: "OpenAI API, Langfuse, RAG",
+            skills_ai: "Claude API, OpenAI API, ElevenLabs, Langfuse, Braintrust",
             skills_frameworks_label: "Frameworks & Librerías",
-            skills_frameworks: "Spring Boot, Nest JS, React, Next.js, Tailwind CSS",
+            skills_frameworks: "Spring Boot, Nest JS, Express, Prisma, React, Next.js, Tailwind CSS",
             skills_cloud_label: "Cloud & DevOps",
-            skills_cloud: "Azure, Docker, GitHub Actions, Redis, New Relic, Auth0",
+            skills_cloud: "Azure, Vercel, Railway, Docker, GitHub Actions",
             skills_databases_label: "Bases de Datos",
-            skills_databases: "PostgreSQL, MySQL",
+            skills_databases: "PostgreSQL, Supabase, Redis",
             skills_tools_label: "Herramientas",
-            skills_tools: "Git/GitHub, Gradle, Cypress, Swagger/OpenAPI, Codex, Claude Code",
+            skills_tools: "Git/GitHub, Claude Code, Codex",
             skills_spoken_languages_label: "Idiomas",
             skills_spoken_languages: "Español (Nativo), Inglés (Fluido/Profesional)",
 
+            github_contrib: "CONTRIBUCIONES DEL ÚLTIMO AÑO",
+            github_view: "Ver perfil",
+
+            socials_title: "REDES",
+
+            download: "Descargar",
+
             contact_title: "CONTACTO",
             contact_desc: "Una de las cosas más importantes que aprendí en los últimos años: las personas a las que podés llegar simplemente mandándoles un mail realmente te sorprenderían.",
+            contact_your_email: "Tu email",
+            contact_say_hi: "Escribime…",
+            contact_send: "Enviar",
             name: "Julián Ritondale",
             phone: "+54 11-2160-4006",
             email: "julianritondale@gmail.com",
