@@ -1,278 +1,85 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import Sketch from './components/Sketch';
-import Video from './components/Video';
-
-interface Project {
-  name: string;
-  stack: string;
-  date: string;
-  bullets: string[];
-  videos?: string[];
-}
-
-function getAge(): number {
-  const today = new Date();
-  const birth = new Date(2004, 6, 31);
-  let age = today.getFullYear() - birth.getFullYear();
-  const m = today.getMonth() - birth.getMonth();
-  if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
-    age--;
-  }
-  return age;
-}
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
+import Hero from './components/ui/Hero';
+import PromptRow from './components/ui/PromptRow';
+import AboutSection from './components/ui/AboutSection';
+import EducationSection from './components/ui/EducationSection';
+import ExperienceSection from './components/ui/ExperienceSection';
+import ProjectsSection from './components/ui/ProjectsSection';
+import GithubSection from './components/ui/GithubSection';
+import SocialsSection from './components/ui/SocialsSection';
+import ResumeSection from './components/ui/ResumeSection';
+import ContactSection from './components/ui/ContactSection';
+import { askBackend } from './lib/chat';
+import type { ChatMsg } from './lib/chat';
 
 function App() {
   const { t, i18n } = useTranslation();
-  const [openProjects, setOpenProjects] = useState<Record<number, boolean>>({});
-  const [openAchievement, setOpenAchievement] = useState(false);
-
-  const toggleLanguage = () => {
-    const newLang = i18n.language.startsWith('es') ? 'en' : 'es';
-    i18n.changeLanguage(newLang);
-  };
-
-  const toggleProject = (i: number) => {
-    setOpenProjects(prev => ({ ...prev, [i]: !prev[i] }));
-  };
-
   const isSpanish = i18n.language.startsWith('es');
-  const age = getAge();
 
-  const projectVideos: Record<number, string[]> = {
-    0: ['/videos/agent-orchestra-demo-1.mp4', '/videos/agent-orchestra-demo-2.mp4'],
-    1: ['/videos/pay-and-pray-demo.mp4'],
-    2: ['/videos/snippet-searcher-demo.mp4'],
-    4: ['/videos/sonora-demo.mp4'],
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => (localStorage.getItem('jr-theme') as 'light' | 'dark') || 'light');
+  const [messages, setMessages] = useState<ChatMsg[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [streaming, setStreaming] = useState(false);
+
+  const toggleLanguage = () => i18n.changeLanguage(isSpanish ? 'en' : 'es');
+  const toggleTheme = () => setTheme(th => {
+    const next = th === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('jr-theme', next);
+    return next;
+  });
+
+  async function ask(question: string) {
+    const q = question.trim();
+    if (!q || loading) return;
+    const next: ChatMsg[] = [...messages, { role: 'user', text: q }];
+    setMessages(next);
+    setLoading(true);
+    setStreaming(false);
+
+    const appendOrReplaceAi = (text: string) => setMessages(m => (m[m.length - 1]?.role === 'ai'
+      ? [...m.slice(0, -1), { role: 'ai', text }]
+      : [...m, { role: 'ai', text }]));
+
+    const answer = await askBackend(next, partial => {
+      setStreaming(true);
+      appendOrReplaceAi(partial);
+    });
+
+    if (!answer) appendOrReplaceAi(t('ui.error'));
+    setStreaming(false);
+    setLoading(false);
+  }
+
+  const clearChat = () => {
+    setMessages([]);
+    setLoading(false);
+    setStreaming(false);
   };
-
-  const projects: Project[] = [6, 1, 2, 3, 4, 5].map((n, i) => ({
-    name: t(`sections.project_${n}_name`),
-    stack: t(`sections.project_${n}_stack`),
-    date: t(`sections.project_${n}_date`),
-    bullets: (t(`sections.project_${n}_bullets`, { returnObjects: true }) as string[]),
-    videos: projectVideos[i],
-  }));
-
-  const achievementBullets = t('sections.achievement_1_bullets', { returnObjects: true }) as string[];
 
   return (
-    <div className="app-container">
+    <div className={`theme-${theme} min-h-screen bg-[var(--bg)] text-[var(--fg)] transition-colors duration-[250ms]`}>
+      <Header theme={theme} onToggleTheme={toggleTheme} isSpanish={isSpanish} onToggleLanguage={toggleLanguage} />
 
-      <nav className="top-nav">
-        <div className="nav-links">
-          <a href="#about">{t('nav.about')}</a>
-          <a href="#education">{t('nav.education')}</a>
-          <a href="#projects">{t('nav.projects')}</a>
-          <a href="#achievements">{t('nav.achievements')}</a>
-          <a href="#skills">{t('nav.skills')}</a>
-          <a href="#contact">{t('nav.contact')}</a>
-          <a
-            href="https://github.com/julian-ritondale"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GITHUB
-          </a>
-          <a
-            href={isSpanish ? '/Julian_Ritondale_CV.pdf' : '/Julian_Ritondale_Resume.pdf'}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {t('sections.resume')}
-          </a>
-        </div>
-      </nav>
+      <div className="mx-auto max-w-[1600px] px-4 max-bp2:pt-[14px]">
+        <Hero messages={messages} loading={loading} streaming={streaming} onAsk={ask} onClear={clearChat} />
+        <PromptRow onAsk={ask} />
 
-      <div className="header-art">
-        <div className="sketch-wrapper">
-          <Sketch />
-          <div className="quote-block">
-            <span className="quote-text">{t('sections.quote')}</span>
-            <span className="quote-attribution">{t('sections.quote_author')}</span>
-          </div>
-        </div>
+        <main className="mt-24">
+          <AboutSection />
+          <EducationSection />
+          <ExperienceSection />
+          <ProjectsSection />
+          <GithubSection />
+          <SocialsSection />
+          <ResumeSection />
+          <ContactSection />
+        </main>
+
+        <Footer />
       </div>
-
-      <main className="content">
-
-        <section className="portfolio-section" id="about">
-          <h2>{t('sections.about_title')}</h2>
-          <div className="reflections">
-            <p className="section-desc">{t('sections.about_desc_1')}</p>
-            <p className="section-desc">{t('sections.about_desc_2')}</p>
-            <p className="section-desc">{t('sections.about_desc_3')}</p>
-          </div>
-          <div className="about-info">
-            <span className="about-name">{t('sections.name')}</span>
-            <span className="about-detail">{age} {t('sections.years_old')}</span>
-            <span className="about-detail">Buenos Aires, Argentina</span>
-          </div>
-        </section>
-
-        <section className="portfolio-section" id="education">
-          <h2>{t('sections.education_title')}</h2>
-          <div className="reflections">
-            <p className="section-desc">{t('sections.education_desc_1')}</p>
-            <p className="section-desc">{t('sections.education_desc_2')}</p>
-          </div>
-          <div className="edu-entry">
-            <div className="edu-header">
-              <span className="edu-uni">{t('sections.education_uni')}</span>
-              <span className="edu-date">{t('sections.education_time')}</span>
-            </div>
-            <div className="edu-degree">{t('sections.education_degree')}</div>
-            <div className="edu-minor">{t('sections.education_minor')}</div>
-          </div>
-        </section>
-
-        <section className="portfolio-section" id="projects">
-          <h2>{t('sections.projects_title')}</h2>
-          <div className="reflections">
-            <p className="section-desc">{t('sections.projects_desc_1')}</p>
-            <p className="section-desc">{t('sections.projects_desc_2')}</p>
-          </div>
-          <div className="projects-list">
-            {projects.map((proj, i) => (
-              <div className="project-entry" key={i}>
-                <div
-                  className="project-summary-wrapper"
-                  onClick={() => toggleProject(i)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={e => e.key === 'Enter' && toggleProject(i)}
-                >
-                  <div className="project-header">
-                    <span className="project-name">
-                      {proj.name}
-                    </span>
-                    <span className="project-date">{proj.date}</span>
-                  </div>
-                  <div className="details-stack">{proj.stack}</div>
-                </div>
-                {openProjects[i] && (
-                  <div className="project-body">
-                    {proj.videos && proj.videos.map((vid, vIdx) => (
-                      <Video
-                        key={vIdx}
-                        src={vid}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                      />
-                    ))}
-                    <ul className="bullet-list">
-                      {proj.bullets.map((b, j) => (
-                        <li key={j}>{b}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="portfolio-section" id="achievements">
-          <h2>{t('sections.achievements_title')}</h2>
-          <div className="reflections">
-            <p className="section-desc">{t('sections.achievements_desc')}</p>
-          </div>
-          <div className="achievement-entry">
-            <div
-              className="achievement-summary-wrapper"
-              onClick={() => setOpenAchievement(!openAchievement)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={e => e.key === 'Enter' && setOpenAchievement(!openAchievement)}
-            >
-              <div className="achievement-header">
-                <span className="achievement-name">
-                  <span className="achievement-title">{t('sections.achievement_1_name')}</span>
-                  <span className="achievement-label">{t('sections.achievement_1_label')}</span>
-                </span>
-                <span className="achievement-meta">
-                  <span className="achievement-place">{t('sections.achievement_1_place')}</span>
-                  <span className="achievement-date">{t('sections.achievement_1_date')}</span>
-                </span>
-              </div>
-              <div className="achievement-note">{t('sections.achievement_1_note')}</div>
-            </div>
-            {openAchievement && (
-              <div className="project-body">
-                <Video
-                  src="/videos/scout-demo.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                />
-                <ul className="bullet-list">
-                  {achievementBullets.map((b, i) => (
-                    <li key={i}>{b}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
-        </section>
-
-        <section className="portfolio-section" id="skills">
-          <h2>{t('sections.skills_title')}</h2>
-          <div className="skills-list">
-            <div className="skill-row">
-              <span className="skill-label">{t('sections.skills_languages_label')}:</span>
-              <span className="skill-value">{t('sections.skills_languages')}</span>
-            </div>
-            <div className="skill-row">
-              <span className="skill-label">{t('sections.skills_ai_label')}:</span>
-              <span className="skill-value">{t('sections.skills_ai')}</span>
-            </div>
-            <div className="skill-row">
-              <span className="skill-label">{t('sections.skills_frameworks_label')}:</span>
-              <span className="skill-value">{t('sections.skills_frameworks')}</span>
-            </div>
-            <div className="skill-row">
-              <span className="skill-label">{t('sections.skills_cloud_label')}:</span>
-              <span className="skill-value">{t('sections.skills_cloud')}</span>
-            </div>
-            <div className="skill-row">
-              <span className="skill-label">{t('sections.skills_databases_label')}:</span>
-              <span className="skill-value">{t('sections.skills_databases')}</span>
-            </div>
-            <div className="skill-row">
-              <span className="skill-label">{t('sections.skills_tools_label')}:</span>
-              <span className="skill-value">{t('sections.skills_tools')}</span>
-            </div>
-            <div className="skill-row">
-              <span className="skill-label">{t('sections.skills_spoken_languages_label')}:</span>
-              <span className="skill-value">{t('sections.skills_spoken_languages')}</span>
-            </div>
-          </div>
-        </section>
-
-        <section className="portfolio-section" id="contact">
-          <h2>{t('sections.contact_title')}</h2>
-          <div className="reflections">
-            <p className="section-desc">{t('sections.contact_desc')}</p>
-          </div>
-          <div className="contact-block">
-            <div className="contact-name">{t('sections.name')}</div>
-            <div className="contact-links">
-              <span className="contact-plain">{t('sections.phone')}</span>
-              <a href={`mailto:${t('sections.email')}`}>{t('sections.email')}</a>
-              <a href={`https://${t('sections.linkedin')}`} target="_blank" rel="noopener noreferrer">{t('sections.linkedin')}</a>
-            </div>
-          </div>
-        </section>
-
-      </main>
-
-      <button className="lang-toggle" onClick={toggleLanguage} id="lang-toggle-btn">
-        {isSpanish ? 'EN' : 'ES'}
-      </button>
-
     </div>
   );
 }

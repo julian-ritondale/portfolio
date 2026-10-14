@@ -20,14 +20,14 @@ export default function Video({
   };
 
   return (
-    <div className="video-center">
+    <div className="aspect-[4/3] overflow-hidden rounded-[22px]">
       <video
         src={src}
         autoPlay={autoPlay}
         loop={loop}
         muted={muted}
         playsInline={playsInline}
-        className={className ?? 'project-video'}
+        className={className ?? 'h-full w-full rounded-[22px] object-cover cursor-pointer'}
         role="link"
         tabIndex={0}
         onClick={openInNewTab}
