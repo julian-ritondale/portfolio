@@ -12,7 +12,7 @@ import GithubSection from './components/ui/GithubSection';
 import SocialsSection from './components/ui/SocialsSection';
 import ResumeSection from './components/ui/ResumeSection';
 import ContactSection from './components/ui/ContactSection';
-import { askBackend } from './lib/chat';
+import { streamChatResponse } from './lib/chat';
 import type { ChatMsg } from './lib/chat';
 
 function App() {
@@ -43,7 +43,7 @@ function App() {
       ? [...m.slice(0, -1), { role: 'ai', text }]
       : [...m, { role: 'ai', text }]));
 
-    const answer = await askBackend(next, partial => {
+    const answer = await streamChatResponse(next, partial => {
       setStreaming(true);
       appendOrReplaceAi(partial);
     });

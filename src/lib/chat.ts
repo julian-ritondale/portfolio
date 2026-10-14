@@ -3,7 +3,7 @@ export interface ChatMsg {
   text: string;
 }
 
-export async function askBackend(history: ChatMsg[], onChunk: (partial: string) => void): Promise<string | null> {
+export async function streamChatResponse(history: ChatMsg[], onChunk: (partial: string) => void): Promise<string | null> {
   try {
     const res = await fetch('/api/chat', {
       method: 'POST',
