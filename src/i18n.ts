@@ -71,10 +71,10 @@ i18n
             experience_1_company: "IntegridAI",
             experience_1_date: "Feb. 2026 — Now",
             experience_1_bullets: [
-              "Compliance management platform helping SMEs meet the requirements of Argentina's anti-corruption law. Own product for a 5-person team.",
-              "Ran 8 validation sessions with 5 stakeholders, confirming 20+ features that shaped the backlog and roadmap.",
-              "Shipped real-time voice simulations for compliance training end to end, integrating ElevenLabs Agents for live voice conversations and the Claude API as an LLM-as-evaluator.",
-              "Benchmarked 6 LLMs in Braintrust, cutting token usage by 8.1% and cost by 14.6% on production models while maintaining evaluation quality.",
+              "Own product for a 5-person team building a compliance management platform that helps SMEs meet Argentina's anti-corruption law requirements.",
+              "Ran 8 validation sessions with 5 stakeholders, using AI tools to prototype rapidly and confirm 20+ features that shaped the backlog and roadmap.",
+              "Shipped real-time voice simulations for compliance training end to end by integrating ElevenLabs Agents for live voice conversations and the Claude API as an LLM-as-evaluator.",
+              "Cut token usage by 8.1% and cost by 14.6% on production models while maintaining evaluation quality by benchmarking 6 LLMs in Braintrust.",
             ],
 
             projects_title: "PROJECTS",
@@ -252,10 +252,10 @@ i18n
             experience_1_company: "IntegridAI",
             experience_1_date: "Feb. 2026 — Ahora",
             experience_1_bullets: [
-              "Plataforma de compliance que ayuda a PyMEs a cumplir con la ley anticorrupción de Argentina. Soy dueño de producto para un equipo de 5 personas.",
-              "Lideré 8 sesiones de validación con 5 stakeholders, confirmando más de 20 funcionalidades que definieron el backlog y el roadmap.",
-              "Lancé simulaciones de voz en tiempo real para entrenamiento de compliance de punta a punta, integrando ElevenLabs Agents para conversaciones de voz en vivo y la API de Claude como evaluador LLM.",
-              "Comparé 6 LLMs en Braintrust, reduciendo el uso de tokens en 8.1% y el costo en 14.6% en producción manteniendo la calidad de evaluación.",
+              "Lidero producto de un equipo de 5 personas que desarrolla una plataforma de compliance que ayuda a las PyMEs a cumplir con los requisitos de la ley 27.401 de Argentina.",
+              "Realicé 8 sesiones de validación con 5 stakeholders, utilizando herramientas de IA para prototipar rápidamente y confirmar más de 20 funcionalidades que dieron forma al backlog y al roadmap.",
+              "Desarrollé de punta a punta simulaciones de voz en tiempo real para capacitación en compliance, integrando ElevenLabs Agents para conversaciones de voz en vivo y la API de Claude como LLM evaluador.",
+              "Reduje el uso de tokens un 8,1% y el costo un 14,6% en modelos de producción manteniendo la calidad de evaluación, mediante el benchmarking de 6 LLMs en Braintrust.",
             ],
 
             projects_title: "PROYECTOS",
