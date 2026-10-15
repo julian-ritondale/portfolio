@@ -5,7 +5,7 @@ Julian Ritondale is a software engineer based in Buenos Aires, Argentina. He is 
 ## Contact
 - Email: julianritondale@gmail.com
 - Phone: +54 11 2160-4006
-- Portfolio: julian-ritondale.github.io
+- Portfolio: julian-ritondale.vercel.app
 - LinkedIn: linkedin.com/in/julianritondale
 
 ## Education
@@ -17,11 +17,11 @@ Julian Ritondale is a software engineer based in Buenos Aires, Argentina. He is 
 ## Experience
 
 ### IntegridAI, Product Engineer (Feb 2026 to present, Buenos Aires)
-IntegridAI is a compliance management platform that helps SMEs meet the requirements of Argentina's anti-corruption law. Stack: TypeScript, NestJS, Next.js, Anthropic, ElevenLabs, PostgreSQL, Docker, Supabase, Vercel.
-- Owns product for a 5-person team.
-- Ran 8 validation sessions with 5 stakeholders, using AI tools to prototype rapidly. This confirmed 20+ features that shaped the backlog and roadmap.
-- Shipped real-time voice simulations for compliance training end to end, integrating ElevenLabs Agents for live voice conversations and the Claude API as an LLM-as-evaluator.
-- Benchmarked 6 LLMs in Braintrust, cutting token usage by 8.1% and cost by 14.6% on production models while maintaining evaluation quality.
+Stack: TypeScript, NestJS, Next.js, Claude API, ElevenLabs, PostgreSQL, Docker, Supabase, Vercel.
+- Owns product for a 5-person team building a compliance management platform that helps SMEs meet Argentina's anti-corruption law requirements.
+- Ran 8 validation sessions with 5 stakeholders, using AI tools to prototype rapidly and confirm 20+ features that shaped the backlog and roadmap.
+- Shipped real-time voice simulations for compliance training end to end by integrating ElevenLabs Agents for live voice conversations and the Claude API as an LLM-as-evaluator.
+- Cut token usage by 8.1% and cost by 14.6% on production models while maintaining evaluation quality by benchmarking 6 LLMs in Braintrust.
 
 ## Projects
 
@@ -34,36 +34,37 @@ Stack: Kotlin, TypeScript, Spring Boot, React, PostgreSQL, Docker.
 ### Agent Orchestra (Apr 2026 to Jul 2026)
 Stack: Python, OpenAI API, ChromaDB, Langfuse.
 - Co-built a multi-agent coding assistant with an orchestrator, 5 specialized sub-agents, and 9 tools.
-- Designed a permissioned tool dispatcher and a 3-tier memory system for safe, resumable execution.
-- Built a RAG pipeline over 28 documents in ChromaDB so responses are grounded in official documentation.
-- Tracked cost, token usage, and retrieval quality in Langfuse, reaching 99.3% error-free execution across 280 instrumented spans.
+- Enforced safe, resumable execution by designing a permissioned tool dispatcher and a 3-tier memory system.
+- Grounded responses in official documentation by building a RAG pipeline over 28 documents in ChromaDB.
+- Achieved 99.3% error-free execution across 280 instrumented spans by tracking cost, token usage, and retrieval quality in Langfuse.
 
 ### Snippet Searcher (Aug 2025 to Dec 2025)
 Stack: Kotlin, TypeScript, Spring Boot, React, PostgreSQL, Redis, Docker, Azure.
-- Led development of a code snippet management and sharing platform built on 4 microservices, powered by a custom language toolchain for a TypeScript subset.
-- Built the lexer, parser, interpreter, and formatter from scratch.
-- Validated the toolchain against an external TCK, passing all 49 scenarios under a 7MB heap limit.
-- Improved responsiveness by moving time-intensive tasks to asynchronous inter-service communication using Redis.
+- Led development of a code snippet management and sharing platform on a 4-microservice architecture, powered by a custom language toolchain for a TypeScript subset.
+- Implemented the core language pipeline by building the lexer, parser, interpreter, and formatter from scratch.
+- Validated the language toolchain against an external TCK, passing all 49 scenarios under a 7MB heap limit.
+- Improved responsiveness by offloading time-intensive tasks to asynchronous inter-service communication using Redis.
 
 ### Sonora (Aug 2025 to Nov 2025)
 Stack: TypeScript, React, Tailwind CSS, NestJS, Prisma, PostgreSQL, Docker, Azure.
 - Co-developed a music social web app for browsing and reviewing albums, artists, and tracks.
-- Integrated the Spotify API to import artist, album, and track metadata plus 30-second audio previews, enabling discovery across Spotify's 100M+ track catalog.
-- Delivered core social features end to end: album and track reviews, review reactions, and user profiles.
+- Enabled music discovery across Spotify's 100M+ track catalog by integrating the Spotify API to import artist, album, and track metadata along with 30-second audio previews.
+- Delivered core social features end to end, including album and track reviews, review reactions, and user profiles.
 
 ## Achievements
 
 ### 1st Place, "Your Time, Your World Cup" AI Competition (Jun 2026)
 Stack: TypeScript, React, Express, OpenAI, Google Calendar, Railway.
 - Co-developed Scout Austral, a web app that classifies all 72 FIFA World Cup 2026 group-stage matches into interest levels based on user preferences and schedule availability.
-- Derived Bayesian priors from natural language descriptions using the OpenAI API, which streamlined onboarding.
-- Synced recommended matches to users' calendars with the Google Calendar API.
+- Streamlined onboarding by deriving Bayesian priors from natural language descriptions using the OpenAI API.
+- Simplified match planning by syncing recommended matches to users' calendars using the Google Calendar API.
 
-## Technical Skills
-- Languages: Kotlin, Java, TypeScript, Python, SQL, HTML/CSS
+## Skills
+- Product: Agile Methodologies, Project Management, Prototyping, Client Interactions
+- Programming languages: Kotlin, Java, TypeScript, JavaScript, Python, SQL, HTML/CSS
 - Frameworks and libraries: Spring Boot, NestJS, Express, Prisma, React, Next.js, Tailwind CSS
 - Databases: PostgreSQL, Supabase, Redis
 - Cloud and DevOps: Azure, Vercel, Railway, Docker, GitHub Actions
 - AI/ML: Claude API, OpenAI API, ElevenLabs, Langfuse, Braintrust
-- Developer tools: Git/GitHub, Claude Code, Codex
+- Tools: Git/GitHub, Claude Code, Codex
 `
