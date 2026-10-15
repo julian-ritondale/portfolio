@@ -12,7 +12,7 @@ Copy `.env.example` to `.env` and fill in:
 
 | Variable | Required | Description |
 | --- | --- | --- |
-| `GEMINI_API_KEY` | Yes | Server-side key for the Gemini API, used by `api/chat.ts`. Never exposed to the client. |
+| `GEMINI_API_KEY` | Yes | Server-side key for the Gemini API. |
 
 ## Local development
 
@@ -20,8 +20,6 @@ Copy `.env.example` to `.env` and fill in:
 npm install
 npm run dev
 ```
-
-`vite.config.ts` includes a dev-only middleware that runs `api/chat.ts` directly, so `/api/chat` works against the real Gemini API while running `npm run dev` without needing the Vercel CLI.
 
 ## Deploying to Vercel
 
