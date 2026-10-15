@@ -5,7 +5,6 @@ Julian Ritondale is a software engineer based in Buenos Aires, Argentina. He is 
 ## Contact
 - Email: julianritondale@gmail.com
 - Phone: +54 11 2160-4006
-- Portfolio: julian-ritondale.vercel.app
 - LinkedIn: linkedin.com/in/julianritondale
 
 ## Education
