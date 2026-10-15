@@ -4,7 +4,7 @@ export const PROJECT_VIDEOS: Record<string, string> = {
   project_1: '/videos/pay-and-pray-demo.mp4',
   project_2: '/videos/snippet-searcher-demo.mp4',
   project_4: '/videos/sonora-demo.mp4',
-  project_6: '/videos/agent-orchestra-demo-1.mp4',
+  project_6: '/videos/agent-orchestra-demo.mp4',
   achievement_1: '/videos/scout-demo.mp4',
 };
 
